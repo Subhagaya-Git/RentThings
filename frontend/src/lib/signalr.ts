@@ -13,12 +13,15 @@ export async function startNotificationHub(handlers: SignalRHandlers): Promise<v
   await stopNotificationHub();
 
   const token = localStorage.getItem('rentthings_token');
-  const url = token
-    ? `/hubs/notifications?access_token=${encodeURIComponent(token)}`
-    : '/hubs/notifications';
-
+  
+  // සජීවී Azure Web App එකේ SignalR Hub ලිපිනය මෙතනට සෘජුවම එකතු කර ඇත
+  const baseUrl = 'https://rentthings-api-bcadewgbakfrbfdd.southeastasia-01.azurewebsites.net/hubs/notifications';
+  
+  // SignalR .withUrl() එක ඇතුළේ access_token එක සාමාන්‍යයෙන් දෙන්නේ options object එකක් විදිහටයි
   const hub = new HubConnectionBuilder()
-    .withUrl(url)
+    .withUrl(baseUrl, {
+      accessTokenFactory: () => token || ''
+    })
     .withAutomaticReconnect()
     .configureLogging(LogLevel.Information)
     .build();
