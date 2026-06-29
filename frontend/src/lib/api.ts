@@ -15,8 +15,9 @@ import type {
   User,
 } from '@/types';
 
+// සජීවී Azure Web App API URL එක සෘජුවම ඇතුළත් කර ඇත
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: 'https://rentthings-api-bcadewgbakfrbfdd.southeastasia-01.azurewebsites.net/api',
 });
 
 api.interceptors.request.use((config) => {
@@ -133,8 +134,11 @@ export const aiApi = {
 export const mapsApi = {
   geocode: (address: string) =>
     api.get<{ latitude: number; longitude: number; formattedAddress: string }>('/maps/geocode', { params: { address } }).then((r) => r.data),
+  
+  // Static Map URL එකටත් සජීවී Azure Domain එක සෘජුවම එකතු කර ඇත
   staticMapUrl: (lat: number, lon: number, zoom = 14) =>
-    `/api/maps/static?lat=${lat}&lon=${lon}&zoom=${zoom}`,
+    `https://rentthings-api-bcadewgbakfrbfdd.southeastasia-01.azurewebsites.net/api/maps/static?lat=${lat}&lon=${lon}&zoom=${zoom}`,
+    
   distance: (lat1: number, lon1: number, lat2: number, lon2: number) =>
     api.get<number>('/maps/distance', { params: { lat1, lon1, lat2, lon2 } }).then((r) => r.data),
 };
