@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+frontend/dist/
+
+# Build outputs
+backend/**/bin/
+backend/**/obj/
+functions/**/bin/
+functions/**/obj/
+
+# IDE
+.vs/
+.idea/
+*.user
+
+# Environment
+.env
+.env.local
+functions/**/local.settings.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*

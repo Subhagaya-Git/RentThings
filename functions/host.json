@@ -1,0 +1,21 @@
+{
+  "version": "2.0",
+  "logging": {
+    "applicationInsights": {
+      "samplingSettings": {
+        "isEnabled": true
+      }
+    },
+    "logLevel": {
+      "default": "Information"
+    }
+  },
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "ConnectionStrings__DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=RentThings;Trusted_Connection=True;TrustServerCertificate=True",
+    "AzureCommunication__ConnectionString": "",
+    "AzureCommunication__SenderEmail": "noreply@rentthings.com"
+  }
+}
